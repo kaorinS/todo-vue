@@ -1,0 +1,17 @@
+{
+  "extends": [
+      "eslint:recommended",
+      "plugin:vue/recommended"
+  ],
+  "parserOptions": {
+    "sourceType": "module", // import/exportを使うため
+    "ecmaVersion": 2015
+  },
+  "env": {
+    "browser": true // ブラウザー用オブジェクト（documentオブジェクト）を使えるように
+  },
+  "settings": {},
+  "plugins": [],
+  "rules": {},
+  "globals": {}
+}
