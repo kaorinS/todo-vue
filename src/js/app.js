@@ -4,10 +4,19 @@ new Vue({
     el: '#app',
     data: {
         newItem: "",
-        todos: []
+        todos: [
+            {
+                item: 'サンプルTODOタスク',
+                isDone: false
+            },
+            {
+                item: 'サンプルDONEタスク',
+                isDone: true
+            }
+        ],
     },
     methods: {
-        addItem: function (e) {
+        addItem: function () {
             // alert();
             if (this.newItem === '') return; //タスク未入力の場合は追加しない
             let todo = {
@@ -19,6 +28,9 @@ new Vue({
         },
         deleteItem: function (i) { //indexを引数に設定
             this.todos.splice(i, 1) //indexで指定された要素を1つ削除
+        },
+        changeState: function (i) {
+            this.todos[i].isDone = !this.todos[i].isDone
         }
     }
 })

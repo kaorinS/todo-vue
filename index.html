@@ -53,7 +53,22 @@
 
             <!-- todoリスト -->
             <ul class="p-todoList js-todo_list">
-                <li class="p-listItem p-todoItem js-list_item" data-text="サンプルTODOタスク">
+                <li
+                  v-for="(todo, index) in todos"
+                  :class="['p-listItem', todo.isDone ? 'p-doneItem' : 'p-todoItem']"
+                  :data-text="todo.item">
+                    <i
+                    :class="['c-listIcon', todo.isDone ? 'fas fa-check-circle p-doneItem__icon' : 'far fa-circle p-todoItem__icon']"
+                    @click="changeState(index)"
+                    ></i>
+                    <span class="p-listItem__text js-todo_list-text">{{ todo.item }}</span>
+                    <input type="text" class="js-todo_list-editArea" :value="todo.item">
+                    <i
+                    class="fas fa-trash-alt c-listIcon p-listItem__trash js-to-delete"
+                    @click="deleteItem(index)"
+                    ></i>
+                </li>
+                <!-- <li class="p-listItem p-todoItem js-list_item" data-text="サンプルTODOタスク">
                     <i class="far fa-circle c-listIcon p-todoItem__icon js-to-done"></i>
                     <span class="p-listItem__text js-todo_list-text">サンプルTODOタスク</span>
                     <input type="text" class="js-todo_list-editArea" value="サンプルTODOタスク">
@@ -64,7 +79,7 @@
                     <span class="p-listItem__text js-todo_list-text">サンプルDONEタスク</span>
                     <input type="text" class="js-todo_list-editArea" value="サンプルDONEタスク">
                     <i class="fas fa-trash-alt c-listIcon p-listItem__trash js-to-delete"></i>
-                </li>
+                </li> -->
             </ul>
         </div>
     </main>
