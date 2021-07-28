@@ -126,6 +126,6 @@ const watchFiles = (done) => {
   done();
 };
 
-exports.default = series(watchFiles, sassComp, minifyCss, BS);
-// exports.default = series(watchFiles, sassComp, minifyCss, lint, jsBuild, minifyJs, BS);
+// exports.default = series(watchFiles, sassComp, minifyCss, BS);
+exports.default = series(watchFiles, sassComp, minifyCss, lint, jsBuild, minifyJs, BS);
 // exports.default = series(watchFiles, minifyCss, jsBuild, minifyJs, lint, BS);
