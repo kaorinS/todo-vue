@@ -28,12 +28,14 @@
             <form class="p-addTodo" @submit.prevent>
                 <div class="p-addTodo__inputArea">
                     <span class="p-addTodo__error js-toggle-error">入力が空です</span>
-                    <input type="text" class="c-inputArea p-addTodo__inputText js-get-val" placeholder="TODO内容を書く">
+                    <input type="text" class="c-inputArea p-addTodo__inputText js-get-val" placeholder="TODO内容を書く" v-model="newItem">
                 </div>
                 <button class="p-addTodo__btn js-add-todo" @click="addItem">
                     TODO 追加!!!
                 </button>
             </form>
+
+            <pre>{{ $data }}</pre>
 
             <!-- 検索 -->
             <div class="c-inputArea p-searchBox">
