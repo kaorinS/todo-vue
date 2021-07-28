@@ -7,11 +7,13 @@ new Vue({
         todos: [
             {
                 item: 'サンプルTODOタスク',
-                isDone: false
+                isDone: false,
+                editMode: false
             },
             {
                 item: 'サンプルDONEタスク',
-                isDone: true
+                isDone: true,
+                editMode: false
             }
         ],
     },
@@ -21,7 +23,8 @@ new Vue({
             if (this.newItem === '') return; //タスク未入力の場合は追加しない
             let todo = {
                 item: this.newItem,
-                isDone : false
+                isDone: false,
+                editMode: false
             };
             this.todos.push(todo); //todosの配列にtodoを追加する
             this.newItem = ''  //タスク追加後、入力フォームを空にする
@@ -29,8 +32,12 @@ new Vue({
         deleteItem: function (i) { //indexを引数に設定
             this.todos.splice(i, 1) //indexで指定された要素を1つ削除
         },
-        changeState: function (i) {
-            this.todos[i].isDone = !this.todos[i].isDone
+        changeState: function (todo) {
+            // this.todos[i].isDone = !this.todos[i].isDone
+            todo.isDone = !todo.isDone
+        },
+        editStart: function (todo) {
+            todo.editMode = true
         }
     }
 })

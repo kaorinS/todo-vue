@@ -364,6 +364,17 @@ body {
   line-height: 1.5;
   margin: 0 1.2rem;
 }
+.p-listItem__editArea {
+  background-color: rgba(255, 255, 255, 0);
+  border: none;
+  box-sizing: border-box;
+  flex-grow: 4;
+  margin-left: 1.2rem;
+  padding: 0;
+}
+.p-listItem__editArea:focus {
+  outline: none;
+}
 .p-listItem__trash {
   color: #f88b9b;
   float: right;

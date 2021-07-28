@@ -59,10 +59,19 @@
                   :data-text="todo.item">
                     <i
                     :class="['c-listIcon', todo.isDone ? 'fas fa-check-circle p-doneItem__icon' : 'far fa-circle p-todoItem__icon']"
-                    @click="changeState(index)"
+                    @click="changeState(todo)"
                     ></i>
-                    <span class="p-listItem__text js-todo_list-text">{{ todo.item }}</span>
-                    <input type="text" class="js-todo_list-editArea" :value="todo.item">
+                    <span
+                      v-if="todo.editMode === false"
+                      class="p-listItem__text js-todo_list-text"
+                      @click="editStart(todo)"
+                      >{{ todo.item }}</span>
+                    <input
+                      v-else-if="todo.editMode === true"
+                      type="text"
+                      class="p-listItem__editArea"
+                      v-model="todo.item"
+                      >
                     <i
                     class="fas fa-trash-alt c-listIcon p-listItem__trash js-to-delete"
                     @click="deleteItem(index)"
