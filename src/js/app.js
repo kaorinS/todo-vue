@@ -16,6 +16,9 @@ new Vue({
             };
             this.todos.push(todo); //todosの配列にtodoを追加する
             this.newItem = ''  //タスク追加後、入力フォームを空にする
+        },
+        deleteItem: function (i) { //indexを引数に設定
+            this.todos.splice(i, 1) //indexで指定された要素を1つ削除
         }
     }
 })
