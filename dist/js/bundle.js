@@ -150,7 +150,7 @@ eval("var g;\n\n// This works in non-strict mode\ng = (function() {\n\treturn th
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ \"./node_modules/vue/dist/vue.esm.js\");\n\nnew vue__WEBPACK_IMPORTED_MODULE_0__[\"default\"]({\n  el: '#app',\n  data: {\n    newItem: \"\",\n    todos: []\n  },\n  methods: {\n    addItem: function addItem(e) {\n      // alert();\n      if (this.newItem === '') return; //タスク未入力の場合は追加しない\n\n      var todo = {\n        item: this.newItem\n      };\n      this.todos.push(todo); //todosの配列にtodoを追加する\n\n      this.newItem = ''; //タスク追加後、入力フォームを空にする\n    }\n  }\n});\n\n//# sourceURL=webpack:///./src/js/app.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ \"./node_modules/vue/dist/vue.esm.js\");\n\nnew vue__WEBPACK_IMPORTED_MODULE_0__[\"default\"]({\n  el: '#app',\n  data: {\n    newItem: \"\",\n    todos: []\n  },\n  methods: {\n    addItem: function addItem(e) {\n      // alert();\n      if (this.newItem === '') return; //タスク未入力の場合は追加しない\n\n      var todo = {\n        item: this.newItem,\n        isDone: false\n      };\n      this.todos.push(todo); //todosの配列にtodoを追加する\n\n      this.newItem = ''; //タスク追加後、入力フォームを空にする\n    }\n  }\n});\n\n//# sourceURL=webpack:///./src/js/app.js?");
 
 /***/ })
 

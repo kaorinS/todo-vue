@@ -38,7 +38,10 @@
             <pre>{{ $data }}</pre>
 
             <ul>
-                <li v-for="todo in todos">{{ todo.item }}</li>
+                <li v-for="todo in todos">
+                    <input type="checkbox" v-model="todo.isDone">
+                    <span :class="{ done: todo.isDone}">{{ todo.item }}</span>
+                </li>
             </ul>
 
             <!-- 検索 -->
