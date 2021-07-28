@@ -1,5 +1,10 @@
 import Vue from 'vue'
 
 new Vue({
-    el: '#app'
+    el: '#app',
+    methods: {
+        addItem: function (e) {
+            alert();
+        }
+    }
 })

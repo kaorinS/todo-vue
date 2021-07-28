@@ -25,12 +25,12 @@
     <main id="app" class="l-main">
         <div class="p-main">
             <!-- todo追加 -->
-            <form class="p-addTodo">
+            <form class="p-addTodo" @submit.prevent>
                 <div class="p-addTodo__inputArea">
                     <span class="p-addTodo__error js-toggle-error">入力が空です</span>
                     <input type="text" class="c-inputArea p-addTodo__inputText js-get-val" placeholder="TODO内容を書く">
                 </div>
-                <button class="p-addTodo__btn js-add-todo">
+                <button class="p-addTodo__btn js-add-todo" @click="addItem">
                     TODO 追加!!!
                 </button>
             </form>
