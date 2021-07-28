@@ -37,6 +37,10 @@
 
             <pre>{{ $data }}</pre>
 
+            <ul>
+                <li v-for="todo in todos">{{ todo.item }}</li>
+            </ul>
+
             <!-- 検索 -->
             <div class="c-inputArea p-searchBox">
                 <i class="fas fa-search p-searchBox__icon"></i>
