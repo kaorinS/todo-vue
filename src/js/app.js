@@ -3,7 +3,8 @@ import Vue from 'vue'
 new Vue({
     el: '#app',
     data: {
-        newItem: "",
+        newItem: '',
+        keyword: '',
         todos: [
             {
                 id: 1,
@@ -22,6 +23,25 @@ new Vue({
                 keydownCode: ''
             }
         ],
+    },
+    computed: {
+        filterTodos: function () {
+            let todos = [];
+
+            for (let i in this.todos) {
+                let todo = this.todos[i];
+                // 部分一致
+                if (todo.item.indexOf(this.keyword) > -1) {
+                    todos.push(todo);
+                }
+                // 前方一致
+                // if (todo.item && todo.item.match(new RegExp("^" + this.keyword))) {
+                //     todos.push(todo);
+                // }
+            }
+
+            return todos;
+        }
     },
     methods: {
         addItem: function () {
@@ -56,8 +76,6 @@ new Vue({
             this.$refs.editArea[i].select()
         },
         getKeydown: function (e, todo) {
-            console.log('------------getKeydown--------------');
-            console.log('event', e);
             todo.keydownCode = e.which
         },
         removeFocus: function (e, todo, i) {

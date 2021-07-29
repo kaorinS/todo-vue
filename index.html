@@ -42,19 +42,24 @@
                     TODO 追加!!!
                 </button>
             </form>
-
-            <pre>{{ $data }}</pre>
+            <!-- デバッグ用 -->
+            <!-- <pre>{{ $data }}</pre> -->
 
             <!-- 検索 -->
             <div class="c-inputArea p-searchBox">
                 <i class="fas fa-search p-searchBox__icon"></i>
-                <input type="text" class="p-searchBox__input js-search" value="" placeholder="キーワードを入力する">
+                <input
+                  v-model="keyword"
+                  type="text"
+                  class="p-searchBox__input js-search"
+                  placeholder="キーワードを入力する"
+                >
             </div>
 
             <!-- todoリスト -->
             <ul class="p-todoList js-todo_list">
                 <li
-                  v-for="(todo, index) in todos"
+                  v-for="(todo, index) in filterTodos"
                   :key="todo.id"
                   :class="['p-listItem', todo.isDone ? 'p-doneItem' : 'p-todoItem']"
                   :data-text="todo.item">
