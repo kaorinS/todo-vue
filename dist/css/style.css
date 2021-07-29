@@ -364,6 +364,9 @@ body {
   line-height: 1.5;
   margin: 0 1.2rem;
 }
+.p-listItem__text.isHide {
+  display: none;
+}
 .p-listItem__editArea {
   background-color: rgba(255, 255, 255, 0);
   border: none;
@@ -371,6 +374,9 @@ body {
   flex-grow: 4;
   margin-left: 1.2rem;
   padding: 0;
+}
+.p-listItem__editArea.isHide {
+  display: none;
 }
 .p-listItem__editArea:focus {
   outline: none;

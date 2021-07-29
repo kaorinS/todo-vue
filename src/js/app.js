@@ -6,11 +6,13 @@ new Vue({
         newItem: "",
         todos: [
             {
+                id: 1,
                 item: 'サンプルTODOタスク',
                 isDone: false,
                 editMode: false
             },
             {
+                id: 2,
                 item: 'サンプルDONEタスク',
                 isDone: true,
                 editMode: false
@@ -21,7 +23,9 @@ new Vue({
         addItem: function () {
             // alert();
             if (this.newItem === '') return; //タスク未入力の場合は追加しない
+            let nextId = this.todos.length;
             let todo = {
+                id: ++nextId,
                 item: this.newItem,
                 isDone: false,
                 editMode: false
@@ -36,8 +40,17 @@ new Vue({
             // this.todos[i].isDone = !this.todos[i].isDone
             todo.isDone = !todo.isDone
         },
-        editStart: function (todo) {
+        editStart: function (todo, i) {
             todo.editMode = true
+            this.$nextTick(() => {
+                this.$refs.editArea[i].focus()
+            })
+        },
+        editAreaFocus: function (i) {
+            console.log('-----------editAreaFocus-------------');
+            console.log('this', this);
+            console.log('this.$refs.editArea[i]', this.$refs.editArea[i]);
+            this.$refs.editArea[i].select()
         }
     }
 })

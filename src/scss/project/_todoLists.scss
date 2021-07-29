@@ -18,6 +18,10 @@
         font-weight: 700;
         line-height: 1.5;
         margin: 0 g.$mg-todoListText;
+
+        &.isHide{
+            display: none;
+        }
     }
 
     &__editArea{
@@ -27,6 +31,10 @@
         flex-grow: 4;
         margin-left: g.$mg-todoListText;
         padding: 0;
+
+        &.isHide{
+            display: none;
+        }
 
     &:focus{
         outline: none;

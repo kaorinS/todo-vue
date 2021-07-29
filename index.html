@@ -28,9 +28,17 @@
             <form class="p-addTodo" @submit.prevent>
                 <div class="p-addTodo__inputArea">
                     <span class="p-addTodo__error js-toggle-error">入力が空です</span>
-                    <input type="text" class="c-inputArea p-addTodo__inputText js-get-val" placeholder="TODO内容を書く" v-model="newItem">
+                    <input
+                      type="text"
+                      class="c-inputArea p-addTodo__inputText js-get-val"
+                      placeholder="TODO内容を書く"
+                      v-model="newItem"
+                    >
                 </div>
-                <button class="p-addTodo__btn js-add-todo" @click="addItem">
+                <button
+                  class="p-addTodo__btn js-add-todo"
+                  @click="addItem"
+                >
                     TODO 追加!!!
                 </button>
             </form>
@@ -39,7 +47,10 @@
 
             <ul>
                 <li v-for="todo in todos">
-                    <input type="checkbox" v-model="todo.isDone">
+                    <input
+                      type="checkbox"
+                      v-model="todo.isDone"
+                    >
                     <span :class="{ done: todo.isDone}">{{ todo.item }}</span>
                     <button @click="deleteItem(index)">Delete</button>
                 </li>
@@ -55,6 +66,7 @@
             <ul class="p-todoList js-todo_list">
                 <li
                   v-for="(todo, index) in todos"
+                  :key="todo.id"
                   :class="['p-listItem', todo.isDone ? 'p-doneItem' : 'p-todoItem']"
                   :data-text="todo.item">
                     <i
@@ -62,15 +74,15 @@
                     @click="changeState(todo)"
                     ></i>
                     <span
-                      v-if="todo.editMode === false"
-                      class="p-listItem__text js-todo_list-text"
-                      @click="editStart(todo)"
+                      :class="['p-listItem__text', {isHide: todo.editMode}]"
+                      @click="editStart(todo, index)"
                       >{{ todo.item }}</span>
                     <input
-                      v-else-if="todo.editMode === true"
+                      ref="editArea"
                       type="text"
-                      class="p-listItem__editArea"
+                      :class="['p-listItem__editArea', {isHide: !todo.editMode}]"
                       v-model="todo.item"
+                      @focus="editAreaFocus(index)"
                       >
                     <i
                     class="fas fa-trash-alt c-listIcon p-listItem__trash js-to-delete"
