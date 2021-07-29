@@ -70,10 +70,11 @@
                       ref="editArea"
                       type="text"
                       :class="['p-listItem__editArea', {isHide: !todo.editMode}]"
-                      v-model="todo.beforeItem"
+                      v-model="todo.editItem"
                       @focus="editAreaFocus(index)"
                       @keydown="getKeydown($event, todo)"
                       @keyup="removeFocus($event, todo, index)"
+                      @blur="editEnd(todo)"
                       >
                     <i
                     class="fas fa-trash-alt c-listIcon p-listItem__trash js-to-delete"

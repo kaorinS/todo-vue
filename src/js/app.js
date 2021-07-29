@@ -8,7 +8,7 @@ new Vue({
             {
                 id: 1,
                 item: 'サンプルTODOタスク',
-                beforeItem: 'サンプルTODOタスク',
+                editItem: 'サンプルTODOタスク',
                 isDone: false,
                 editMode: false,
                 keydownCode: ''
@@ -16,7 +16,7 @@ new Vue({
             {
                 id: 2,
                 item: 'サンプルDONEタスク',
-                beforeItem: 'サンプルDONEタスク',
+                editItem: 'サンプルDONEタスク',
                 isDone: true,
                 editMode: false,
                 keydownCode: ''
@@ -31,7 +31,7 @@ new Vue({
             let todo = {
                 id: ++nextId,
                 item: this.newItem,
-                beforeItem: this.newItem,
+                editItem: this.newItem,
                 isDone: false,
                 editMode: false,
                 keydownCode: ''
@@ -64,6 +64,13 @@ new Vue({
             if ((13 === todo.keydownCode && e.which === 13) || (e.keycode === 13 && e.shiftKey === true)) {
                 this.$refs.editArea[i].blur()
             }
+        },
+        editEnd: function (todo) {
+            if (!todo.editItem || todo.editItem === "") {
+                todo.editItem = todo.item
+            }
+            todo.item = todo.editItem
+            todo.editMode = false
         }
     }
 })
