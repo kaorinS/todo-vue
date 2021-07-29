@@ -8,6 +8,7 @@ new Vue({
             {
                 id: 1,
                 item: 'サンプルTODOタスク',
+                beforeItem: 'サンプルTODOタスク',
                 isDone: false,
                 editMode: false,
                 keydownCode: ''
@@ -15,6 +16,7 @@ new Vue({
             {
                 id: 2,
                 item: 'サンプルDONEタスク',
+                beforeItem: 'サンプルDONEタスク',
                 isDone: true,
                 editMode: false,
                 keydownCode: ''
@@ -29,6 +31,7 @@ new Vue({
             let todo = {
                 id: ++nextId,
                 item: this.newItem,
+                beforeItem: this.newItem,
                 isDone: false,
                 editMode: false,
                 keydownCode: ''
@@ -56,6 +59,11 @@ new Vue({
             console.log('------------getKeydown--------------');
             console.log('event', e);
             todo.keydownCode = e.which
+        },
+        removeFocus: function (e, todo, i) {
+            if ((13 === todo.keydownCode && e.which === 13) || (e.keycode === 13 && e.shiftKey === true)) {
+                this.$refs.editArea[i].blur()
+            }
         }
     }
 })
