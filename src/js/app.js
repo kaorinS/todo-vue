@@ -9,13 +9,15 @@ new Vue({
                 id: 1,
                 item: 'サンプルTODOタスク',
                 isDone: false,
-                editMode: false
+                editMode: false,
+                keydownCode: ''
             },
             {
                 id: 2,
                 item: 'サンプルDONEタスク',
                 isDone: true,
-                editMode: false
+                editMode: false,
+                keydownCode: ''
             }
         ],
     },
@@ -28,7 +30,8 @@ new Vue({
                 id: ++nextId,
                 item: this.newItem,
                 isDone: false,
-                editMode: false
+                editMode: false,
+                keydownCode: ''
             };
             this.todos.push(todo); //todosの配列にtodoを追加する
             this.newItem = ''  //タスク追加後、入力フォームを空にする
@@ -47,10 +50,12 @@ new Vue({
             })
         },
         editAreaFocus: function (i) {
-            console.log('-----------editAreaFocus-------------');
-            console.log('this', this);
-            console.log('this.$refs.editArea[i]', this.$refs.editArea[i]);
             this.$refs.editArea[i].select()
+        },
+        getKeydown: function (e, todo) {
+            console.log('------------getKeydown--------------');
+            console.log('event', e);
+            todo.keydownCode = e.which
         }
     }
 })
